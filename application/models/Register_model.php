@@ -5,7 +5,7 @@
 			$this->load->database();
 		}
 		public function insert($array){
-			$sql="insert into user values(?,?,?)";
+			$sql="insert into user values(?,?,?,?)";
 			$data[0]=$array['username'];
 			$data[1]=md5($array['password']);
 			$data[2]=$array['email'];
