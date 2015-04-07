@@ -14,4 +14,6 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 /nbproject/
-*/database.php
+
+
+application/config/database.php
