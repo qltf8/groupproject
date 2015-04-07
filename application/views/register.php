@@ -27,6 +27,6 @@
 <div><input type="submit" value="Submit" /></div>
 
 </form>
-
+<img src="<?=base_url('images/mizzou.jpg')>" alt="image">
 </body>
 </html>

@@ -6,14 +6,15 @@ class Register extends CI_Controller {
  {
   $this->load->helper(array('form', 'url'));
   
-  $this->load->library('form_validation');
-  $this->form_validation->set_rules('username', 'Username', 'required|callback_username_check');
-$this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|callback_password_check');
-$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
-    
+	$this->load->library('form_validation');
+	$this->form_validation->set_rules('username', 'Username', 'required|callback_username_check');
+	$this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|callback_password_check');
+	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
+	$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+    $this->form_validation->set_rules('nation', 'nation', 'required');
   if ($this->form_validation->run() == FALSE)
   {
+  $this->load->helper('url');
    $this->load->view('register');
   }
   else
