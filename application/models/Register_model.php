@@ -14,5 +14,11 @@
 			if($bol)
 				echo "successs";
 		}
+		public function showData(){
+			$sql="selelct * from user";
+			$res=$this->db->query($sql);
+			$array=$res->result_array();
+			return $array;
+		}
 	}
 ?>
