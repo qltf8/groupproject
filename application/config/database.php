@@ -83,7 +83,7 @@ if(true)
 {
 	$db['default']['dbdriver'] = 'mysqli';
 	$db['default']['hostname'] = 'localhost';
-	$db['default']['port'] = '8889'
+	$db['default']['port'] = '8889';
 	$db['default']['username'] = 'root';
 	$db['default']['password'] = 'root';
 	$db['default']['database'] = 'applicationportal';		
