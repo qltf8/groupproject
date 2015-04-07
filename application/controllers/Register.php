@@ -10,7 +10,7 @@ class Register extends CI_Controller {
 	$this->form_validation->set_rules('username', 'Username', 'required|callback_username_check');
 	$this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|callback_password_check');
 	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-	$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[users.email]');
+	$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
     $this->form_validation->set_rules('nation', 'nation', 'required');
   if ($this->form_validation->run() == FALSE)
   {
