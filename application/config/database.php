@@ -68,7 +68,7 @@ $db['default'] = array(
 	'pconnect' => FALSE,
 	'db_debug' => TRUE,
 	'cache_on' => FALSE,
-	'cachedir' => '../config/index.html',
+	'cachedir' => getenv('OPENSHIFT_DATA_DIR') . 'storage/framework/dbcache',
 	'char_set' => 'utf8',
 	'dbcollat' => 'utf8_general_ci',
 	'swap_pre' => '',
@@ -79,14 +79,14 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-if(true)
+if(getenv('OPENSHIFT_MYSQL_DB_HOST'))
 {
 	$db['default']['dbdriver'] = 'mysqli';
-	$db['default']['hostname'] = 'localhost';
-	$db['default']['port'] = '3306';
-	$db['default']['username'] = 'root';
-	$db['default']['password'] = 'root';
-	$db['default']['database'] = 'applicationportal';		
+	$db['default']['hostname'] = getenv('OPENSHIFT_MYSQL_DB_HOST');
+	$db['default']['port'] = getenv('OPENSHIFT_MYSQL_DB_PORT');
+	$db['default']['username'] = getenv('OPENSHIFT_MYSQL_DB_USERNAME');
+	$db['default']['password'] = getenv('OPENSHIFT_MYSQL_DB_PASSWORD');
+	$db['default']['database'] = getenv('OPENSHIFT_APP_NAME');		
 }
 else // default to MySQL
 {
