@@ -14,7 +14,7 @@ class Register extends CI_Controller {
     $this->form_validation->set_rules('nation', 'nation', 'required');
   if ($this->form_validation->run() == FALSE)
   {
-  $this->load->helper('url');
+  	$this->load->helper('url');
    $this->load->view('register');
   }
   else
