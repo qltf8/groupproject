@@ -8,7 +8,7 @@
 			$sql="insert into user values(?,?,?)";
 			$data[0]=$array['username'];
 			$data[1]=md5($array['password']);
-			$data[2]=$array['eamail']
+			$data[2]=$array['email'];
 			$data[3]=$array['nation'];
 			$bol=$this->db->query($sql,$data);
 			if($bol)

@@ -2,9 +2,7 @@
 <head>
 <title>My Form</title>
 </head>
-<link href="application/jquery-ui-1.11.2/jquery-ui.css" rel="stylesheet">
-<script src="application/jquery-ui-1.11.2/external/jquery/jquery.js"></script>
-<script src="application/jquery-ui-1.11.2/jquery-ui.js"></script>
+
 <body>
 
 <?php echo validation_errors(); ?>
