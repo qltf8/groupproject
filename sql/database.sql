@@ -1,7 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
 -- Host: dbhost-mysql.cs.missouri.edu    Database: cs4380sp15grp15
--- author: Qintai Liu
 -- ------------------------------------------------------
 -- Server version	5.1.73
 
@@ -24,10 +23,10 @@ DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `admin` (
-  `id` varchar(100) NOT NULL DEFAULT '',
+  `admin_id` varchar(100) NOT NULL DEFAULT '',
   `password` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,7 +47,7 @@ DROP TABLE IF EXISTS `app`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `app` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `name` varchar(128) DEFAULT NULL,
   `gpa` int(11) DEFAULT NULL,
   `degree` varchar(128) DEFAULT NULL,
@@ -56,8 +55,8 @@ CREATE TABLE `app` (
   `email` varchar(128) DEFAULT NULL,
   `graduateDate` date DEFAULT NULL,
   `workPlace` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `app_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`student_id`),
+  CONSTRAINT `app_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -68,6 +67,33 @@ CREATE TABLE `app` (
 LOCK TABLES `app` WRITE;
 /*!40000 ALTER TABLE `app` DISABLE KEYS */;
 /*!40000 ALTER TABLE `app` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `comment`
+--
+
+DROP TABLE IF EXISTS `comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comment` (
+  `student_id` varchar(128) NOT NULL DEFAULT '',
+  `faculty_id` varchar(128) NOT NULL DEFAULT '',
+  `comment` text,
+  PRIMARY KEY (`student_id`,`faculty_id`),
+  KEY `faculty_id` (`faculty_id`),
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`) ON DELETE CASCADE,
+  CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`faculty_id`) REFERENCES `instructor` (`faculty_id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comment`
+--
+
+LOCK TABLES `comment` WRITE;
+/*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -101,11 +127,11 @@ DROP TABLE IF EXISTS `curTeach`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `curTeach` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `courseName` varchar(128) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`,`courseName`),
+  PRIMARY KEY (`student_id`,`courseName`),
   KEY `courseName` (`courseName`),
-  CONSTRAINT `curTeach_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `curTeach_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE,
   CONSTRAINT `curTeach_ibfk_2` FOREIGN KEY (`courseName`) REFERENCES `course` (`courseName`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -127,11 +153,11 @@ DROP TABLE IF EXISTS `graduate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `graduate` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `degree` varchar(128) DEFAULT NULL,
   `adviseName` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `graduate_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`student_id`),
+  CONSTRAINT `graduate_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -145,6 +171,29 @@ LOCK TABLES `graduate` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `instructor`
+--
+
+DROP TABLE IF EXISTS `instructor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `instructor` (
+  `faculty_id` varchar(128) NOT NULL DEFAULT '',
+  `email` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`faculty_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `instructor`
+--
+
+LOCK TABLES `instructor` WRITE;
+/*!40000 ALTER TABLE `instructor` DISABLE KEYS */;
+/*!40000 ALTER TABLE `instructor` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `interStudent`
 --
 
@@ -152,11 +201,11 @@ DROP TABLE IF EXISTS `interStudent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `interStudent` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `score` varchar(128) DEFAULT NULL,
   `semester` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `interStudent_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`student_id`),
+  CONSTRAINT `interStudent_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -177,12 +226,12 @@ DROP TABLE IF EXISTS `likeTeach`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `likeTeach` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `courseName` varchar(128) NOT NULL DEFAULT '',
   `score` double DEFAULT NULL,
-  PRIMARY KEY (`id`,`courseName`),
+  PRIMARY KEY (`student_id`,`courseName`),
   KEY `courseName` (`courseName`),
-  CONSTRAINT `likeTeach_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `likeTeach_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE,
   CONSTRAINT `likeTeach_ibfk_2` FOREIGN KEY (`courseName`) REFERENCES `course` (`courseName`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -204,11 +253,11 @@ DROP TABLE IF EXISTS `preTeach`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `preTeach` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `courseName` varchar(128) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`,`courseName`),
+  PRIMARY KEY (`student_id`,`courseName`),
   KEY `courseName` (`courseName`),
-  CONSTRAINT `preTeach_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `preTeach_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE,
   CONSTRAINT `preTeach_ibfk_2` FOREIGN KEY (`courseName`) REFERENCES `course` (`courseName`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -230,11 +279,11 @@ DROP TABLE IF EXISTS `undergraduate`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `undergraduate` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `program` varchar(128) DEFAULT NULL,
   `level` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `undergraduate_ibfk_1` FOREIGN KEY (`id`) REFERENCES `app` (`id`) ON DELETE CASCADE
+  PRIMARY KEY (`student_id`),
+  CONSTRAINT `undergraduate_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `app` (`student_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -255,11 +304,11 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` varchar(128) NOT NULL DEFAULT '',
+  `student_id` varchar(128) NOT NULL DEFAULT '',
   `password` varchar(128) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   `nation` varchar(128) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -281,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-07 20:40:34
+-- Dump completed on 2015-04-08  8:05:55

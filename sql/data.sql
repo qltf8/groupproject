@@ -1,14 +1,14 @@
 create table user(
-	id varchar(128),
+	student_id varchar(128),
 	password varchar(128),
 	email varchar(128),
 	nation varchar(128),
-	primary key(id)
+	primary key(student_id)
 )engine=innodb;
 
 
 create table app(
-	id varchar(128),
+	student_id varchar(128),
 	name varchar(128),
 	gpa int,
 	degree varchar(128), 
@@ -16,33 +16,33 @@ create table app(
 	email varchar(128),
 	graduateDate date,
 	workPlace varchar(256),
-	primary key(id),
-	foreign key(id) references user(id) on delete cascade
+	primary key(student_id),
+	foreign key(student_id) references user(student_id) on delete cascade
 )engine=InnoDB;
 
 create table undergraduate(
-	id varchar(128),
+	student_id varchar(128),
 	program varchar(128),
 	level varchar(128),
-	primary key(id),
-	foreign key(id) references app(id) on delete cascade
+	primary key(student_id),
+	foreign key(student_id) references app(student_id) on delete cascade
 )engine=innodb;
 
 create table graduate(
-	id varchar(128),
+	student_id varchar(128),
 	degree varchar(128),
 	adviseName varchar(128),
-	primary key(id),
-	foreign key(id) references app(id) on delete cascade
+	primary key(student_id),
+	foreign key(student_id) references app(student_id) on delete cascade
 )engine=innodb;
 
 
 create table interStudent(
-	id varchar(128),
+	student_id varchar(128),
 	score varchar(128),
 	semester varchar(128),
-	primary key(id),
-	foreign key(id) references app(id) on delete cascade
+	primary key(student_id),
+	foreign key(student_id) references app(student_id) on delete cascade
 )engine=innodb;
 
 
@@ -53,35 +53,50 @@ create table course(
 )engine=innodb;
 
 create table curTeach(
-	id varchar(128),
+	student_id varchar(128),
 	courseName varchar(128),
-	primary key(id,courseName),
-	foreign key(id) references app(id) on delete cascade,
+	primary key(student_id,courseName),
+	foreign key(student_id) references app(student_id) on delete cascade,
 	foreign key(courseName) references course(courseName) on delete cascade
 )engine=innodb;
 
 
 create table preTeach(
-	id varchar(128),
+	student_id varchar(128),
 	courseName varchar(128),
-	primary key(id,courseName),
-	foreign key(id) references app(id) on delete cascade,
+	primary key(student_id,courseName),
+	foreign key(student_id) references app(student_id) on delete cascade,
 	foreign key(courseName) references course(courseName) on delete cascade
 )engine=innodb;
 
 create table likeTeach(
-	id varchar(128),
+	student_id varchar(128),
 	courseName varchar(128),
 	score double,
-	primary key(id,courseName),
-	foreign key(id) references app(id) on delete cascade,
+	primary key(student_id,courseName),
+	foreign key(student_id) references app(student_id) on delete cascade,
 	foreign key(courseName) references course(courseName) on delete cascade
 )engine=innodb;
 
 
  CREATE TABLE `admin` (
-  `id` varchar(100) NOT NULL DEFAULT '',
+  `admin_id` varchar(100) NOT NULL DEFAULT '',
   `password` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`admin_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+create table instructor(
+	faculty_id varchar(128),
+	email varchar(128),
+	primary key(faculty_id)
+)engine=InnoDB;
+
+create table comment(
+	student_id varchar(128),
+	faculty_id varchar(128),
+	comment text,
+	primary key(student_id,faculty_id),
+	foreign key(student_id) references user(student_id) on delete cascade,
+	foreign key(faculty_id) references instructor(faculty_id) on delete cascade
+)engine=InnoDB;
