@@ -47,10 +47,10 @@ public function password_check($str)
 	}
 }
  public function checkUnique(){
- 	$student_id=$this->input->post('student_id');
- 	$this->load->model('register_model','register');
- 	echo $this->register->ajxCheck($student_id);
- 	
+ 	//$student_id=$this->input->post('student_id');
+ 	//$this->load->model('register_model','register');
+ 	//echo $this->register->ajxCheck($student_id);
+ 	echo 0;
  }
 
  public function setSession(){
