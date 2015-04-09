@@ -3,6 +3,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->database();
+			//$this->db->query("use test");
 		}
 		public function insert($array){
 			$sql="insert into user values(?,?,?,?)";
@@ -19,6 +20,12 @@
 			$res=$this->db->query($sql);
 			$array=$res->result_array();
 			return $array;
+		}
+		public function ajxCheck($id){
+			$sql="select * from user where student_id=?";
+			$data[0]=$id;
+			$res=$this->db->query($sql,$data);
+			return $res->num_rows();
 		}
 	}
 ?>

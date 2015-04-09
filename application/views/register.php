@@ -13,8 +13,8 @@
 <button id="button2" type="button">I want to register</button>
 </div>
 <h5>Username</h5>
-<input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" />
-
+<input type="text" name="username" id="username" value="<?php echo set_value('username'); ?>" size="50" onkeyup="ajaxCheck(this.value)">
+<span id="show"></span>
 <h5>Password</h5>
 <input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
 
@@ -33,4 +33,17 @@
 </form>
 <img src="<?php echo base_url('images/mizzou.jpg'); ?>" alt="image">
 </body>
+<script>
+	function ajaxCheck(username){
+		var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("show").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("post","<?=site_url('register/checkUnique')?>",true);
+ 		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+ 		xmlhttp.send("student_id="+username);
+	}
+
 </html>
