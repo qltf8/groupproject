@@ -9,7 +9,8 @@ create table user(
 
 create table app(
 	student_id varchar(128),
-	name varchar(128),
+	firstName varchar(128),
+	lastName varchar(128),
 	gpa int,
 	degree varchar(128), 
 	phoneNumber varchar(128),

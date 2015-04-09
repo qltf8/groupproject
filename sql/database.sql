@@ -48,7 +48,8 @@ DROP TABLE IF EXISTS `app`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `app` (
   `student_id` varchar(128) NOT NULL DEFAULT '',
-  `name` varchar(128) DEFAULT NULL,
+  `firstName` varchar(128) DEFAULT NULL,
+  `lastName` varchar(128) DEFAULT NULL,
   `gpa` int(11) DEFAULT NULL,
   `degree` varchar(128) DEFAULT NULL,
   `phoneNumber` varchar(128) DEFAULT NULL,
