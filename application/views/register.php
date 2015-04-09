@@ -45,5 +45,5 @@
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send("student_id="+username);
 	}
-
+</script>
 </html>
