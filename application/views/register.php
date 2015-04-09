@@ -1,6 +1,4 @@
-<?php
- header("Access-Control-Allow-Origin: http://applicationportal-se2015groupl.rhcloud.com/index.php");
-?>
+
 <html>
 <head>
 <title>My Form</title>
