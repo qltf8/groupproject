@@ -7,7 +7,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('register'); ?>
+<?php echo form_open('index.php/register'); ?>
 <div id="container1" class="container">
 <button id="button1" type="button">I want to login</button><br>
 <button id="button2" type="button">I want to register</button>
@@ -41,7 +41,7 @@
                 document.getElementById("show").innerHTML = xmlhttp.responseText;
             }
         }
-        xmlhttp.open("post","<?=site_url('register/checkUnique')?>",true);
+        xmlhttp.open("post","<?=site_url('index.php/register/checkUnique')?>",true);
  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
  		xmlhttp.send("student_id="+username);
 	}
