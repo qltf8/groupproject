@@ -11,7 +11,7 @@ create table app(
 	student_id varchar(128),
 	firstName varchar(128),
 	lastName varchar(128),
-	gpa int,
+	gpa double,
 	degree varchar(128), 
 	phoneNumber varchar(128),
 	email varchar(128),
