@@ -89,6 +89,7 @@ create table likeTeach(
 
 create table instructor(
 	faculty_id varchar(128),
+	password varchar(128),
 	email varchar(128),
 	primary key(faculty_id)
 )engine=InnoDB;
