@@ -12,13 +12,22 @@ public function index()
     $this->form_validation->set_rules('nation', 'nation', 'required');
 	if($this->form_validation->run() == FALSE)
 		{
-  		//$this->load->helper('url');
+  		    //$this->load->helper('url');
    			$this->load->view('register');
 		}
   		else
 		{
    			$this->load->model('register_model','register');
-   			$this->register->insert($_POST);
+   			$user=$this->input->post('username');
+   			$nation=$this->input->post('nation');
+   			$this->setSession($user);
+   			$bol=$this->register->insert($_POST);
+   			if($bol){
+   			$this->load->library('session');
+ 			$this->session->set_userdata('user',$user);
+ 			$this->session->set_userdata('nation',$nation);
+ 			$this->load->view('registersuccess');
+			}
 		}
 }
 public function username_check($str)
@@ -51,9 +60,8 @@ public function password_check($str)
  	echo $this->register->ajxCheck($student_id);
  }
 
- public function setSession(){
+ public function setSession($user){
  	$this->load->library('session');
- 	$user='qltf8';
  	$this->session->set_userdata('user',$user);
  }
 

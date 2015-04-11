@@ -1,12 +1,4 @@
-<html>
-<head>
-<title>My Form</title>
-</head>
-<body>
+<?php
 
-<h3>Your form was successfully submitted!</h3>
-
-<p><?php echo anchor('register', 'Try it again!'); ?></p>
-
-</body>
-</html>
+print_r($this->session->all_userdata());
+?>

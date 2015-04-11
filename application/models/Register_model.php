@@ -3,7 +3,7 @@
 		public function __construct(){
 			parent::__construct();
 			$this->load->database();
-			//$this->db->query("use test");
+			$this->db->query("use test");
 		}
 		public function insert($array){
 			$sql="insert into user values(?,?,?,?)";
@@ -13,7 +13,7 @@
 			$data[3]=$array['nation'];
 			$bol=$this->db->query($sql,$data);
 			if($bol)
-				echo "successs";
+				return true;
 		}
 		public function showData(){
 			$sql="selelct * from user";
