@@ -57,7 +57,7 @@ CREATE TABLE `app` (
   `graduateDate` date DEFAULT NULL,
   `workPlace` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`student_id`),
-  CONSTRAINT `app_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`) ON DELETE CASCADE
+  CONSTRAINT `app_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,7 +83,7 @@ CREATE TABLE `comment` (
   `comment` text,
   PRIMARY KEY (`student_id`,`faculty_id`),
   KEY `faculty_id` (`faculty_id`),
-  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `user` (`student_id`) ON DELETE CASCADE,
+  CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`student_id`) ON DELETE CASCADE,
   CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`faculty_id`) REFERENCES `instructor` (`faculty_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -180,6 +180,7 @@ DROP TABLE IF EXISTS `instructor`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `instructor` (
   `faculty_id` varchar(128) NOT NULL DEFAULT '',
+  `password` varchar(128) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`faculty_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -298,28 +299,27 @@ LOCK TABLES `undergraduate` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `student`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `student`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `user` (
+CREATE TABLE `student` (
   `student_id` varchar(128) NOT NULL DEFAULT '',
   `password` varchar(128) DEFAULT NULL,
   `email` varchar(128) DEFAULT NULL,
-  `nation` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `student`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `student` WRITE;
+/*!40000 ALTER TABLE `student` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

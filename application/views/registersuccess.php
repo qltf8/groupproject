@@ -4,6 +4,6 @@
 
 </head>
 <body>
-	<p>successfully</p>
+	<p>hello <?=$this->session->userdata('profession')?> : <?=$this->session->userdata('user')?> successfully</p>
 </body>
 </html>

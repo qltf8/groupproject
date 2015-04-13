@@ -9,7 +9,6 @@ public function index()
 	$this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|callback_password_check');
 	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 	$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-    $this->form_validation->set_rules('nation', 'nation', 'required');
 	if($this->form_validation->run() == FALSE)
 		{
   		    //$this->load->helper('url');
@@ -19,12 +18,11 @@ public function index()
 		{
    			$this->load->model('register_model','register');
    			$user=$this->input->post('username');
-   			$nation=$this->input->post('nation');
-   			$this->setSession($user);
    			$bol=$this->register->insert($_POST);
    			if($bol){
    			$this->load->library('session');
  			$this->session->set_userdata('user',$user);
+ 			$this->session->set_userdata('profession','student');
  			$this->load->view('registersuccess');
 			}
 		}
@@ -59,16 +57,14 @@ public function password_check($str)
  	echo $this->register->ajxCheck($student_id);
  }
 
- public function setSession($user){
- 	$this->load->library('session');
- 	$this->session->set_userdata('user',$user);
- }
-
- public function showSession(){
- 	$this->load->library('session');
- 	$arr=$this->session->all_userdata();
- 	print_r($arr);
- }
-
+ 	public function student(){
+ 		echo "student";
+ 	}
+ 	public function instructor(){
+ 		echo "instructor";
+ 	}
+ 	public function admin(){
+ 		echo "admin";
+ 	}
 }
 ?>

@@ -1,8 +1,7 @@
-create table user(
+create table student(
 	student_id varchar(128),
 	password varchar(128),
 	email varchar(128),
-	nation varchar(128),
 	primary key(student_id)
 )engine=innodb;
 
@@ -18,7 +17,7 @@ create table app(
 	graduateDate date,
 	workPlace varchar(256),
 	primary key(student_id),
-	foreign key(student_id) references user(student_id) on delete cascade
+	foreign key(student_id) references student(student_id) on delete cascade
 )engine=InnoDB;
 
 create table undergraduate(
@@ -99,6 +98,6 @@ create table comment(
 	faculty_id varchar(128),
 	comment text,
 	primary key(student_id,faculty_id),
-	foreign key(student_id) references user(student_id) on delete cascade,
+	foreign key(student_id) references student(student_id) on delete cascade,
 	foreign key(faculty_id) references instructor(faculty_id) on delete cascade
 )engine=InnoDB;
