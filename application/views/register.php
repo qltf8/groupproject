@@ -47,6 +47,7 @@ h1 {
     text-shadow: 0 1px 4px rgba(0,0,0,.2);
 }
 
+
 form {
     position: relative;
     width: 305px;
