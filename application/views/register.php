@@ -26,10 +26,6 @@ background-image:url(<?=base_url('images/1.jpg')?>);
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('index.php/register'); ?>
-<div id="container1" class="container">
-<button id="button1" type="button">I want to login</button><br>
-<button id="button2" type="button">I want to register</button>
-</div>
 <h5>Username</h5>
 <input type="text" name="username" id="username" value="<?php echo set_value('username'); ?>" size="50" onkeyup="ajaxCheck(this.value)">
 <span id="show"></span>
