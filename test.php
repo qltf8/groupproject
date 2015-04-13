@@ -1,5 +1,5 @@
 <html>
-<meta http-equiv="Refresh" content="5; url=<?=base_url('index/form/index')?>" /> 
+<meta http-equiv="Refresh" content="5; url=<?=base_url('index.php/form/index')?>" /> 
 <head>
 
 </head>
