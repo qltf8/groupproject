@@ -1,4 +1,9 @@
-<?php
+<html>
+<meta http-equiv="Refresh" content="5; url=<?=base_url('index/form/index')?>" /> 
+<head>
 
-print_r($this->session->all_userdata());
-?>
+</head>
+<body>
+	<p>successfully</p>
+</body>
+</html>

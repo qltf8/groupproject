@@ -1,20 +1,9 @@
-<HTML> 
-<HEAD> 
-<style>
+<html>
+<meta http-equiv="Refresh" content="5; url=<?=base_url('index/form/index')?>" /> 
+<head>
 
-
-</style>
-</HEAD> 
-<BODY> 
-	<form name="myForm" method="get" action="" >
-		<button type="button" onclick="fun()">button</button>
-	</form>
-</BODY> 
-<script>
-	function fun(){
-		var form=document.forms['myForm'];
-		form.action="asd.php";
-		form.submit();
-	}
-</script>
-</HTML> 
+</head>
+<body>
+	<p>successfully</p>
+</body>
+</html>

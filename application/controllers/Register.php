@@ -25,7 +25,6 @@ public function index()
    			if($bol){
    			$this->load->library('session');
  			$this->session->set_userdata('user',$user);
- 			$this->session->set_userdata('nation',$nation);
  			$this->load->view('registersuccess');
 			}
 		}
