@@ -20,6 +20,16 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('form');
+		//$this->load->view('form');
+		$this->home();
+	}
+
+	public function home()
+	{
+		$data['title'] = "TA/PLA App";
+
+		$this->load->view('templates/header', $data);
+		$this->load->view('home');
+		$this->load->view('templates/footer', $data);
 	}
 }
