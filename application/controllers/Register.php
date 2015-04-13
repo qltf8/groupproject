@@ -10,7 +10,6 @@ public function index()
 	$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 	$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
 	if($this->form_validation->run() == FALSE)
-<<<<<<< HEAD
 		{
   		    //$this->load->helper('url');
    			$this->load->view('register');
