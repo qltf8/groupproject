@@ -3,7 +3,24 @@
 <head>
 <title>My Form</title>
 </head>
+<style>
+body {
+background-image:url(<?=base_url('images/1.jpg')?>);
+	background-repeat:no-repeat;
+	background-size: cover;
+    -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 5s; /* Chrome, Safari, Opera */
+    -webkit-animation-iteration-count: infinite;
+}
 
+/* Chrome, Safari, Opera */
+@-webkit-keyframes example {
+     0%   {background-image:url(<?=base_url('images/1.jpg')?>);}
+    25%  {background-image:url(<?=base_url('images/2.jpg')?>);}
+    50%  {background-image:url(<?=base_url('images/3.jpg')?>);}
+    100% {background-image:url(<?=base_url('images/4.jpg')?>);}
+}
+</style>
 <body>
 
 <?php echo validation_errors(); ?>
