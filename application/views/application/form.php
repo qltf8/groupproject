@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Form</title>
+<title>Application Form</title>
 <style>
 	
 	.chosen-select:hover{
@@ -62,13 +62,11 @@
 		
 		Mizzou email address:<br>
 		<input type="text" name="email">
-		<br>
 		
-		Anticipated graduation date:<br>
+		<br>Anticipated graduation date:<br>
 		<input type="text" name="grad date">
-		<br>
-		
-		Course(s) You Are Currently Teaching:<br>
+
+		<br>Course(s) You Are Currently Teaching:<br>
 		<select name="teaching[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
@@ -79,9 +77,8 @@
         		 </optgroup>
           	<?php endforeach;?>
           </select>
-		<br>
-		
-		Course(s) You Have Previously Taught:<br>
+
+		<br>Course(s) You Have Previously Taught:<br>
 		<select name="taught[]" style="width:350px;" class="chosen-select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
@@ -92,9 +89,7 @@
         		 </optgroup>
           	<?php endforeach;?>
           </select>
-		<br>
-		
-		Course(s) You Would Like to Teach:<br>
+		<br>Course(s) You Would Like to Teach:<br>
 		<select name="teach[]" style="width:350px;" class="chosen-select" onchange="fun()" id='taught' class="select" multiple tabindex="6">
         	<?php foreach($course as $val):?>
         		<?php $dept=$val['deptment'];?>
