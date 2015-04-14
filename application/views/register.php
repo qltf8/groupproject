@@ -1,38 +1,39 @@
-
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
         <title>Registration Form</title>
-    </head>
+</head>
     <link href="<?=base_url('jquery-ui-1.11.2/jquery-ui.css')?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?=base_url();?>css/style.css">
     <script src="<?=base_url('jquery-ui-1.11.2/external/jquery/jquery.js')?>"></script>
     <script src="<?=base_url('jquery-ui-1.11.2/jquery-ui.js')?>"></script>
-    <style>
-        body 
-        {
-            background-image:url(<?=base_url('images/1.jpg')?>);
-	        background-repeat:no-repeat;
-	        background-size: cover;
-            -webkit-animation-name: example; /* Chrome, Safari, Opera */
-            -webkit-animation-duration: 5s; /* Chrome, Safari, Opera */
-            -webkit-animation-iteration-count: infinite;
-        }
+<style>
+    body 
+    {
+        background-image:url(<?=base_url('images/1.jpg')?>);
+        background-repeat:no-repeat;
+        background-size: cover;
+        -webkit-animation-name: example; /* Chrome, Safari, Opera */
+        -webkit-animation-duration: 5s; /* Chrome, Safari, Opera */
+        -webkit-animation-iteration-count: infinite;
+    }
 
-        /* Chrome, Safari, Opera */
-        @-webkit-keyframes example 
-        {
-            0%   {background-image:url(<?=base_url('images/1.jpg')?>);}
-            25%  {background-image:url(<?=base_url('images/2.jpg')?>);}
-            50%  {background-image:url(<?=base_url('images/3.jpg')?>);}
-            100% {background-image:url(<?=base_url('images/4.jpg')?>);}
-        }
-    </style>
+    /* Chrome, Safari, Opera */
+    @-webkit-keyframes example 
+    {
+        0%   {background-image:url(<?=base_url('images/1.jpg')?>);}
+        25%  {background-image:url(<?=base_url('images/2.jpg')?>);}
+        50%  {background-image:url(<?=base_url('images/3.jpg')?>);}
+        100% {background-image:url(<?=base_url('images/4.jpg')?>);}
+    }
+</style>
 <body>
-    <?php echo validation_errors(); ?>
+
     <div id="container1" class="container">
         <button id="button1" type="button">I want to login</button><br>
         <button id="button2" type="button">I want to register</button>
     </div>
+
     <div id="container2" class="container">
         <h1>Login</h1>
         <form action="<?=base_url('register/student')?>" method="post" name="login" id="login">
@@ -46,10 +47,12 @@
             <button id="submit" type="submit">Sign me in</button>
             <button class="back" type="button">Back</button>
         </form>
+        <?php echo validation_errors('<p class="error">'); ?>
     </div>
+
     <div id="container3" class="container">
         <h1>Register</h1>
-        <form action="<?=base_url('register/index')?>" method="post" id="form1">
+        <form action="<?=base_url('register/add_student')?>" method="post" id="form1">
             <input type="text" name="username" class="username" onchange="ajaxCheck(this.value)" placeholder="Username" id='username' value="<?php echo set_value('username'); ?>"><span id="show"></span>
             <input type="password" name="password" class="password" placeholder="Password" id='password1' value="<?php echo set_value('password'); ?>">
             <input type="password" name="passconf" class="password" placeholder="Type it again" id='password2' value="<?php echo set_value('passconf'); ?>">
@@ -57,7 +60,9 @@
             <button id="register" type="submit">Register</button>
             <button class="back" type="button">Back</button>
         </form>
+        <?php echo validation_errors('<p class="error">'); ?>
     </div>
+
 </body>
 <script>
 	function ajaxCheck(username){

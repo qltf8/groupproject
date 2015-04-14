@@ -1,34 +1,39 @@
         *{
-            margin:0px;
-            padding:0px;
-            content:0px;
-        } 
+            margin: 0px;
+            padding: 0px;
+            content: 0px;
+        }
+
+        .error{
+            color: #FF0000;
+            font-size: 15px;
+        }
               
         .background{
-        position:absolute;
-        top:0px;
-        left:0px;
-        opacity:0.3;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            opacity: 0.3;
         }
+
         .container {
-        position:absolute;
-        top:150px;
-        left:480px;
+            position: absolute;
+            top: 150px;
+            left: 480px;
         }
 
         h1 {
-        text-align:center;
-        font-size: 30px;
-        font-weight: 700;
-        text-shadow: 0 1px 4px rgba(0,0,0,.2);
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            text-shadow: 0 1px 4px rgba(0,0,0,.2);
         }
 
-
         form {
-        position: relative;
-        width: 305px;
-        margin: 15px auto 0 auto;
-        text-align: center;
+            position: relative;
+            width: 305px;
+            margin: 15px auto 0 auto;
+            text-align: center;
         }
 
         input {
@@ -125,10 +130,11 @@
 
             border: 0px solid #ef4300;
         }
+        
         select{
         	margin :20px auto 0px;
         }
 
         #container2,#container3{
-        display:none;
+            display:none;
         }
