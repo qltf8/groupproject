@@ -6,20 +6,25 @@
 			//$this->db->query("use test");
 		}
 		public function insert($array){
-			$sql="insert into user values(?,?,?)";
+			$sql="insert into student values(?,?,?)";
 			$data[0]=$array['username'];
 			$data[1]=md5($array['password']);
 			$data[2]=$array['email'];
-			$data[3]=$array['nation'];
 			$bol=$this->db->query($sql,$data);
 			if($bol)
-				echo "successs";
+				return true;
 		}
 		public function showData(){
-			$sql="selelct * from user";
+			$sql="selelct * from student";
 			$res=$this->db->query($sql);
 			$array=$res->result_array();
 			return $array;
+		}
+		public function ajxCheck($id){
+			$sql="select * from student where student_id=?";
+			$data[0]=$id;
+			$res=$this->db->query($sql,$data);
+			return $res->num_rows();
 		}
 	}
 ?>
