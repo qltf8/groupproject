@@ -1,22 +1,22 @@
 use test;
-INSERT INTO user VALUES ('12345','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12346','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12347','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12348','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12349','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12350','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12351','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12352','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12353','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12354','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12355','098f6bcd4621d373cade4e832627b4f6','test@test.com','native'),
-						('12356','098f6bcd4621d373cade4e832627b4f6','test@test.com','international'),
-						('12357','098f6bcd4621d373cade4e832627b4f6','test@test.com','international'),
-						('12358','098f6bcd4621d373cade4e832627b4f6','test@test.com','international'),
-						('12359','098f6bcd4621d373cade4e832627b4f6','test@test.com','international'),
-						('12360','098f6bcd4621d373cade4e832627b4f6','test@test.com','international')
+INSERT INTO student VALUES ('12345','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12346','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12347','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12348','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12349','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12350','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12351','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12352','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12353','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12354','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12355','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12356','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12357','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12358','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12359','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+						('12360','098f6bcd4621d373cade4e832627b4f6','test@test.com')
 ;
---Change the data type of gpa from into to double
+
 INSERT INTO app VALUES  ('12345','TestF','TestL','3.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
 						('12346','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
 						('12347','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL),
@@ -35,6 +35,11 @@ INSERT INTO app VALUES  ('12345','TestF','TestL','3.8','testMajor','111-111-1111
 						('12360','TestF','TestL','2.8','testMajor','111-111-1111','test@test.com',CAST("2015-12-31" AS DATE),NULL)
 ;
 
+INSERT INTO instructor VALUES('98765','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+							 ('98766','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
+							 ('98767','098f6bcd4621d373cade4e832627b4f6','test@test.com')
+;
+
 INSERT INTO comment VALUES ('12345','98765',"He SUCKSSSSSS"),
 						   ('12346','98765',"He's ehh."),
 						   ('12347','98765',"He's pretty great")
@@ -45,11 +50,6 @@ INSERT INTO graduate VALUES ('12355','Computer Science','Adriana Wheeler'),
 							('12350','WhatEver','ThatOneDude')
 ;
 
---Need to add password field to instructor
-INSERT INTO instructor VALUES('98765','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
-							 ('98766','098f6bcd4621d373cade4e832627b4f6','test@test.com'),
-							 ('98767','098f6bcd4621d373cade4e832627b4f6','test@test.com')
-;
 
 INSERT INTO interStudent VALUES('12345','100','Fall 2015'),
 								('12346','50','Spring 2014'),
@@ -80,7 +80,7 @@ INSERT INTO course VALUES	('CS1050','CS'),
 							('CS4530','CS')
 ;
 
-INSERT INTO currTeach VALUES	('12345','CS1050'),
+INSERT INTO curTeach VALUES	('12345','CS1050'),
 								('12346','IT2280'),
 								('12355','CS4530')
 ;
@@ -98,8 +98,8 @@ INSERT INTO likeTeach VALUES	('12345','CS3050','58'),
 								('12349','IT2280','100'),
 								('12350','IT1000','92'),
 								('12351','CS3330','57'),
-								('12352','CS4350','49'),
-								('12353','CS4350','30'),
+								('12352','CS4530','49'),
+								('12353','CS4530','30'),
 								('12354','CS3330','84'),
 								('12355','CS3050','91'),
 								('12356','CS3050','97'),
@@ -110,3 +110,4 @@ INSERT INTO likeTeach VALUES	('12345','CS3050','58'),
 ;
 
 INSERT INTO admin VALUES	('admin','098f6bcd4621d373cade4e832627b4f6','admin@test.com');
+
