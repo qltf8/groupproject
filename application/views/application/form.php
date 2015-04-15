@@ -1,3 +1,4 @@
+<?php $this->load->library('session');?>
 <html>
 <head>
 <title>Form</title>
@@ -19,16 +20,13 @@
 </head>
 <body>
 	<form action="#" method="POST" name="application">
+		<input type="hidden" name="id" value="<?=$this->session->userdata('user')?>">
 		First Name: <br>
 		<input type="text" name="fname">
 		<br>
 		
 		Last Name: <br>
 		<input type="text" name="lname">
-		<br>
-		
-		ID:<br>
-		<input type="text" name="id">
 		<br>
 		
 		GPA:<br>
@@ -57,7 +55,7 @@
 		<br>
 		<?php }?>
 		Phone Number:<br>
-		<input type="text" name="phonenumber">
+		<input type="text" name="phone">
 		<br>
 		
 		Mizzou email address:<br>
@@ -65,7 +63,7 @@
 		<br>
 		
 		Anticipated graduation date:<br>
-		<input type="text" name="grad date">
+		<input type="text" name="gradDate">
 		<br>
 		
 		Course(s) You Are Currently Teaching:<br>
@@ -113,7 +111,7 @@
 		
 		<?php if($nation=='international'){?>
 		SPEAK/OPT score, if applicable:<br>
-		<input type="text" name="SPEAK">
+		<input type="text" name="score">
 		<br>
 		
 		Semester of last test:<br>

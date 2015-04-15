@@ -11,7 +11,6 @@ create table app(
 	firstName varchar(128),
 	lastName varchar(128),
 	gpa double,
-	degree varchar(128), 
 	phoneNumber varchar(128),
 	email varchar(128),
 	graduateDate date,
