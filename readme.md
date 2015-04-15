@@ -1,1 +1,1 @@
-a930064207eccdf80a426c1126d0eed6d330362d
+Link to a changeset with a non-numeric hash: commit:c6f4d0fd (displays c6f4d0fd);
